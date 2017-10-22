@@ -153,13 +153,16 @@ namespace EmSELab1
        
             pen.EndCap = LineCap.ArrowAnchor;
 
-            graph.DrawLine(pen, new Point(2, regressionPictureBox.Size.Height - 2), new Point(regressionPictureBox.Size.Width, regressionPictureBox.Size.Height-2));
-            graph.DrawLine(pen, new Point(2,  regressionPictureBox.Size.Height - 2), new Point(2, 0));
+            graph.DrawLine(pen, new Point(2, regressionPictureBox.Size.Height - 2), new Point(regressionPictureBox.Size.Width, regressionPictureBox.Size.Height-2)); //Y line
+            graph.DrawLine(pen, new Point(2,  regressionPictureBox.Size.Height - 2), new Point(2, 0)); //X line
 
-            graph.DrawString("X", font, brush, regressionPictureBox.Size.Width - 10, regressionPictureBox.Size.Height - 15);
-            graph.DrawString("Y", font, brush, 4,0);
+            graph.DrawString("Y", font, brush, regressionPictureBox.Size.Width - 10, regressionPictureBox.Size.Height - 15);
+            graph.DrawString("X", font, brush, 4,0);
 
-            float divider = 2;
+
+
+
+            float divider = 2; //Zoom
             if (ys.Length != xs.Length)
             {
                 return;
