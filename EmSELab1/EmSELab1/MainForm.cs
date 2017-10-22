@@ -150,12 +150,14 @@ namespace EmSELab1
             Pen pen = new Pen(Color.Blue, 1);
             Brush brush = new SolidBrush(Color.Blue);
             Brush brush_points = new SolidBrush(color);
-
+       
             pen.EndCap = LineCap.ArrowAnchor;
-            graph.DrawLine(pen, new Point(1, 1), new Point(regressionPictureBox.Size.Width,1));
-            graph.DrawLine(pen, new Point(1, 1), new Point(1, regressionPictureBox.Size.Height));
-            graph.DrawString("X", font, brush, (float)regressionPictureBox.Size.Width - 10, 5);
-            graph.DrawString("Y", font, brush, 5, (float)regressionPictureBox.Height-10 );
+
+            graph.DrawLine(pen, new Point(2, regressionPictureBox.Size.Height - 2), new Point(regressionPictureBox.Size.Width, regressionPictureBox.Size.Height-2));
+            graph.DrawLine(pen, new Point(2,  regressionPictureBox.Size.Height - 2), new Point(2, 0));
+
+            graph.DrawString("X", font, brush, regressionPictureBox.Size.Width - 10, regressionPictureBox.Size.Height - 15);
+            graph.DrawString("Y", font, brush, 4,0);
 
             float divider = 2;
             if (ys.Length != xs.Length)
