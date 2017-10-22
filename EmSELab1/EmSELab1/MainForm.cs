@@ -140,7 +140,7 @@ namespace EmSELab1
             corellationMatrixLabel.Visible = true;
         }
 
-        private void DrawRegressionGraphPoints(int[] ys, int[] xs, Color color)
+        private void DrawRegressionGraphPoints(float[] ys, float[] xs, Color color)
         {
             regressionPictureBox.Visible = true;
             regression_label.Visible = true;
@@ -167,7 +167,9 @@ namespace EmSELab1
             for (int i = 0; i < ys.Length; i++)
             {
                 graph.FillRectangle(brush_points, ys[i]/divider, regressionPictureBox.Height -(xs[i]), 4, 4);
-            }      
+            }
+            var regressionParams = RegressionProcessor.FitPoints(xs, ys);
+            var b = regressionParams.Item1;
         }
     }
 }
