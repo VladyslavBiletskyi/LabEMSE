@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using EmSELab1.DTOs;
+using EmSELab1.Processors;
 
 namespace EmSELab1
 {
@@ -77,8 +78,7 @@ namespace EmSELab1
 
         private void ProcessData()
         {
-            
+            float[,] corellationData = CorellationMatrixProcessor.FindCorrelationMatrix(inputData);
         }
-
     }
 }
