@@ -165,9 +165,7 @@ namespace EmSELab1
             for (int i = 0; i < ys.Length; i++)
             {
                 graph.FillRectangle(brush_points, ys[i]/divider, regressionPictureBox.Height -(xs[i]), 4, 4);
-            }
-
-       
+            }      
         }
     }
 }
