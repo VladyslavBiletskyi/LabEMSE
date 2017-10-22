@@ -22,9 +22,9 @@ namespace EmSELab1
         private void uploadButton_Click(object sender, EventArgs e)
         {
             bool isSuccessfull = TryUploadData();
+            showDataButton.Visible = isSuccessfull;
             if (isSuccessfull)
-            {
-                showDataButton.Visible = true;
+            {               
                 ProcessData();
             }
         }
