@@ -159,9 +159,6 @@ namespace EmSELab1
             graph.DrawString("Y", font, brush, regressionPictureBox.Size.Width - 10, regressionPictureBox.Size.Height - 15);
             graph.DrawString("X", font, brush, 4,0);
 
-
-
-
             float divider = 2; //Zoom
             if (ys.Length != xs.Length)
             {
@@ -169,10 +166,13 @@ namespace EmSELab1
             }
             for (int i = 0; i < ys.Length; i++)
             {
-                graph.FillRectangle(brush_points, ys[i]/divider, regressionPictureBox.Height -(xs[i]), 4, 4);
+                graph.FillRectangle(brush_points, ys[i]/divider, regressionPictureBox.Size.Height - xs[i], 4, 4);
             }
             var regressionParams = RegressionProcessor.FitPoints(xs, ys);
-            var b = regressionParams.Item1;
+            var a = (float)regressionParams.Item1;
+            var b = (float)regressionParams.Item2;
+            int yfinal = regressionPictureBox.Size.Width;
+            graph.DrawLine(new Pen(Color.Red), a/divider, regressionPictureBox.Size.Height, (yfinal  * b)/ divider, regressionPictureBox.Size.Height - yfinal);
         }
     }
 }
