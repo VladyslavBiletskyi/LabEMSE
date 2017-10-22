@@ -45,6 +45,8 @@ namespace EmSELab1
 
         private bool TryUploadData()
         {
+            openFileDialog.Filter = "TXT files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog.InitialDirectory = Application.StartupPath;
             if (openFileDialog.ShowDialog() != DialogResult.OK)
             {
                 dataUploadStateLabel.Text = ImportAburtedState;
