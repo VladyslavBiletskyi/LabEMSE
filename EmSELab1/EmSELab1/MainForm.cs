@@ -42,11 +42,25 @@ namespace EmSELab1
                 grid.ShowDialog();
             }
         }
+        private string GetParentDirectory(string path, int parentCount)
+        {
+            if (string.IsNullOrEmpty(path) || parentCount < 1)
+            {
+                return path;
+            }
+            string parent = System.IO.Path.GetDirectoryName(path);
 
+            if (--parentCount > 0)
+            {
+                return GetParentDirectory(parent, parentCount);
+            }
+
+            return parent;
+        }
         private bool TryUploadData()
         {
             openFileDialog.Filter = "TXT files (*.txt)|*.txt|All files (*.*)|*.*";
-            openFileDialog.InitialDirectory = Application.StartupPath;
+            openFileDialog.InitialDirectory = GetParentDirectory(Application.StartupPath, 2);
             if (openFileDialog.ShowDialog() != DialogResult.OK)
             {
                 dataUploadStateLabel.Text = ImportAburtedState;
