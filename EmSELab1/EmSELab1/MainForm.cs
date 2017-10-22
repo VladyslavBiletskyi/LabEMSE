@@ -22,6 +22,19 @@ namespace EmSELab1
         private void uploadButton_Click(object sender, EventArgs e)
         {
             bool isSuccessfull = TryUploadData();
+            if (isSuccessfull)
+            {
+                showDataButton.Visible = true;
+                ProcessData();
+            }
+        }
+
+        private void showDataButton_Click(object sender, EventArgs e)
+        {
+            using (DataGridForm grid = new DataGridForm(inputData))
+            {
+                grid.ShowDialog();
+            }
         }
 
         private bool TryUploadData()
@@ -61,5 +74,11 @@ namespace EmSELab1
                 return false;
             }
         }
+
+        private void ProcessData()
+        {
+            
+        }
+
     }
 }
