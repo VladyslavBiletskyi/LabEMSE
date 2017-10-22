@@ -14,6 +14,7 @@ namespace EmSELab1
         [STAThread]
         static void Main()
         {
+            //222222
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
