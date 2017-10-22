@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Windows.Forms;
 using EmSELab1.DTOs;
@@ -13,17 +17,22 @@ namespace EmSELab1
         private const string ImportFailedState = "Imported failed";
         private const string ImportAburtedState = "Imported aborted";
 
+        private Graphics graph;
+
         private IList<InputDataDto> inputData;
         public MainForm()
         {
             InitializeComponent();
             inputData = new List<InputDataDto>();
+            graph = regressionPictureBox.CreateGraphics();
+            graph.Clear(Color.White);
         }
 
         private void uploadButton_Click(object sender, EventArgs e)
         {
             bool isSuccessfull = TryUploadData();
             showDataButton.Visible = isSuccessfull;
+
             if (isSuccessfull)
             {
                 ProcessData();
@@ -32,6 +41,7 @@ namespace EmSELab1
             {
                 corellationDataGridView.Visible = false;
                 corellationMatrixLabel.Visible = false;
+                regressionPictureBox.Refresh();
             }
         }
 
@@ -101,6 +111,7 @@ namespace EmSELab1
         {
             float[,] corellationData = CorellationMatrixProcessor.FindCorrelationMatrix(inputData);
             UpdateCorellationGrid(corellationData);
+            DrawPoints(inputData.Select(x => x.Y).ToArray(), inputData.Select(x => x.X1).ToArray(), Color.Black);
         }
 
         private void UpdateCorellationGrid(float[,] corellationData)
@@ -124,6 +135,20 @@ namespace EmSELab1
             corellationDataGridView.Refresh();
             corellationDataGridView.Visible = true;
             corellationMatrixLabel.Visible = true;
+        }
+
+        private void DrawPoints(int[] ys, int[] xs, Color color)
+        {
+            Brush brush = new SolidBrush(color);
+            float divider = 2;
+            if (ys.Length != xs.Length)
+            {
+                return;
+            }
+            for (int i = 0; i < ys.Length; i++)
+            {
+                graph.FillEllipse(brush, ys[i]/divider, regressionPictureBox.Height -(xs[i]), 3, 3);
+            }
         }
     }
 }

@@ -35,7 +35,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.corellationDataGridView = new System.Windows.Forms.DataGridView();
             this.corellationMatrixLabel = new System.Windows.Forms.Label();
+            this.regressionPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.corellationDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.regressionPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // uploadButton
@@ -101,11 +103,21 @@
             this.corellationMatrixLabel.Text = "Corellation matrix";
             this.corellationMatrixLabel.Visible = false;
             // 
+            // regressionPictureBox
+            // 
+            this.regressionPictureBox.BackColor = System.Drawing.Color.White;
+            this.regressionPictureBox.Location = new System.Drawing.Point(28, 213);
+            this.regressionPictureBox.Name = "regressionPictureBox";
+            this.regressionPictureBox.Size = new System.Drawing.Size(494, 202);
+            this.regressionPictureBox.TabIndex = 4;
+            this.regressionPictureBox.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(550, 575);
+            this.Controls.Add(this.regressionPictureBox);
             this.Controls.Add(this.corellationMatrixLabel);
             this.Controls.Add(this.corellationDataGridView);
             this.Controls.Add(this.label1);
@@ -115,6 +127,7 @@
             this.Name = "MainForm";
             this.Text = "EMSELab1";
             ((System.ComponentModel.ISupportInitialize)(this.corellationDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.regressionPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,6 +142,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView corellationDataGridView;
         private System.Windows.Forms.Label corellationMatrixLabel;
+        private System.Windows.Forms.PictureBox regressionPictureBox;
     }
 }
 
