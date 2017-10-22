@@ -41,6 +41,8 @@ namespace EmSELab1
             {
                 corellationDataGridView.Visible = false;
                 corellationMatrixLabel.Visible = false;
+                regressionPictureBox.Visible = false;
+                regression_label.Visible = false;
                 regressionPictureBox.Refresh();
             }
         }
@@ -111,7 +113,8 @@ namespace EmSELab1
         {
             float[,] corellationData = CorellationMatrixProcessor.FindCorrelationMatrix(inputData);
             UpdateCorellationGrid(corellationData);
-            DrawPoints(inputData.Select(x => x.Y).ToArray(), inputData.Select(x => x.X1).ToArray(), Color.Black);
+
+            DrawRegressionGraphPoints(inputData.Select(x => x.Y).ToArray(), inputData.Select(x => x.X1).ToArray(), Color.Black);
         }
 
         private void UpdateCorellationGrid(float[,] corellationData)
@@ -137,9 +140,23 @@ namespace EmSELab1
             corellationMatrixLabel.Visible = true;
         }
 
-        private void DrawPoints(int[] ys, int[] xs, Color color)
+        private void DrawRegressionGraphPoints(int[] ys, int[] xs, Color color)
         {
-            Brush brush = new SolidBrush(color);
+            regressionPictureBox.Visible = true;
+            regression_label.Visible = true;
+            regressionPictureBox.Refresh();
+
+            Font font = new Font("Arial", 7);
+            Pen pen = new Pen(Color.Blue, 1);
+            Brush brush = new SolidBrush(Color.Blue);
+            Brush brush_points = new SolidBrush(color);
+
+            pen.EndCap = LineCap.ArrowAnchor;
+            graph.DrawLine(pen, new Point(1, 1), new Point(regressionPictureBox.Size.Width,1));
+            graph.DrawLine(pen, new Point(1, 1), new Point(1, regressionPictureBox.Size.Height));
+            graph.DrawString("X", font, brush, (float)regressionPictureBox.Size.Width - 10, 5);
+            graph.DrawString("Y", font, brush, 5, (float)regressionPictureBox.Height-10 );
+
             float divider = 2;
             if (ys.Length != xs.Length)
             {
@@ -147,8 +164,10 @@ namespace EmSELab1
             }
             for (int i = 0; i < ys.Length; i++)
             {
-                graph.FillEllipse(brush, ys[i]/divider, regressionPictureBox.Height -(xs[i]), 3, 3);
+                graph.FillRectangle(brush_points, ys[i]/divider, regressionPictureBox.Height -(xs[i]), 4, 4);
             }
+
+       
         }
     }
 }

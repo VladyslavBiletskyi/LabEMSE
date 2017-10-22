@@ -36,6 +36,7 @@
             this.corellationDataGridView = new System.Windows.Forms.DataGridView();
             this.corellationMatrixLabel = new System.Windows.Forms.Label();
             this.regressionPictureBox = new System.Windows.Forms.PictureBox();
+            this.regression_label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.corellationDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.regressionPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -111,12 +112,24 @@
             this.regressionPictureBox.Size = new System.Drawing.Size(494, 202);
             this.regressionPictureBox.TabIndex = 4;
             this.regressionPictureBox.TabStop = false;
+            this.regressionPictureBox.Visible = false;
+            // 
+            // regression_label
+            // 
+            this.regression_label.AutoSize = true;
+            this.regression_label.Location = new System.Drawing.Point(220, 427);
+            this.regression_label.Name = "regression_label";
+            this.regression_label.Size = new System.Drawing.Size(117, 13);
+            this.regression_label.TabIndex = 5;
+            this.regression_label.Text = "Linear regression graph";
+            this.regression_label.Visible = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(550, 575);
+            this.Controls.Add(this.regression_label);
             this.Controls.Add(this.regressionPictureBox);
             this.Controls.Add(this.corellationMatrixLabel);
             this.Controls.Add(this.corellationDataGridView);
@@ -143,6 +156,7 @@
         private System.Windows.Forms.DataGridView corellationDataGridView;
         private System.Windows.Forms.Label corellationMatrixLabel;
         private System.Windows.Forms.PictureBox regressionPictureBox;
+        private System.Windows.Forms.Label regression_label;
     }
 }
 
