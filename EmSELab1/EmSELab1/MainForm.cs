@@ -25,8 +25,13 @@ namespace EmSELab1
             bool isSuccessfull = TryUploadData();
             showDataButton.Visible = isSuccessfull;
             if (isSuccessfull)
-            {               
+            {
                 ProcessData();
+            }
+            else
+            {
+                corellationDataGridView.Visible = false;
+                corellationMatrixLabel.Visible = false;
             }
         }
 
@@ -79,6 +84,30 @@ namespace EmSELab1
         private void ProcessData()
         {
             float[,] corellationData = CorellationMatrixProcessor.FindCorrelationMatrix(inputData);
+            UpdateCorellationGrid(corellationData);
+        }
+
+        private void UpdateCorellationGrid(float[,] corellationData)
+        {
+            corellationDataGridView.Columns.Clear();
+            corellationDataGridView.Rows.Clear();
+            
+            corellationDataGridView.Columns.Add("Y", "Y");
+            corellationDataGridView.Columns.Add("X1", "X1");
+            corellationDataGridView.Columns.Add("X2", "X2");
+
+            for (int i = 0; i < corellationData.GetLength(0); i++)
+            {
+                corellationDataGridView.Rows.Add();
+                for (int j = 0; j < corellationData.GetLength(1); j++)
+                {
+                    corellationDataGridView.Rows[i].Cells[j].Value = corellationData[i, j];
+                }
+            }
+
+            corellationDataGridView.Refresh();
+            corellationDataGridView.Visible = true;
+            corellationMatrixLabel.Visible = true;
         }
     }
 }

@@ -33,6 +33,9 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.showDataButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.corellationDataGridView = new System.Windows.Forms.DataGridView();
+            this.corellationMatrixLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.corellationDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // uploadButton
@@ -76,17 +79,42 @@
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 1;
             // 
+            // corellationDataGridView
+            // 
+            this.corellationDataGridView.AllowUserToAddRows = false;
+            this.corellationDataGridView.AllowUserToDeleteRows = false;
+            this.corellationDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.corellationDataGridView.Location = new System.Drawing.Point(89, 80);
+            this.corellationDataGridView.Name = "corellationDataGridView";
+            this.corellationDataGridView.ReadOnly = true;
+            this.corellationDataGridView.Size = new System.Drawing.Size(347, 97);
+            this.corellationDataGridView.TabIndex = 2;
+            this.corellationDataGridView.Visible = false;
+            // 
+            // corellationMatrixLabel
+            // 
+            this.corellationMatrixLabel.AutoSize = true;
+            this.corellationMatrixLabel.Location = new System.Drawing.Point(236, 184);
+            this.corellationMatrixLabel.Name = "corellationMatrixLabel";
+            this.corellationMatrixLabel.Size = new System.Drawing.Size(86, 13);
+            this.corellationMatrixLabel.TabIndex = 3;
+            this.corellationMatrixLabel.Text = "Corellation matrix";
+            this.corellationMatrixLabel.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 535);
+            this.ClientSize = new System.Drawing.Size(550, 575);
+            this.Controls.Add(this.corellationMatrixLabel);
+            this.Controls.Add(this.corellationDataGridView);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.showDataButton);
             this.Controls.Add(this.dataUploadStateLabel);
             this.Controls.Add(this.uploadButton);
             this.Name = "MainForm";
             this.Text = "EMSELab1";
+            ((System.ComponentModel.ISupportInitialize)(this.corellationDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -99,6 +127,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.Button showDataButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView corellationDataGridView;
+        private System.Windows.Forms.Label corellationMatrixLabel;
     }
 }
 
